@@ -2,7 +2,10 @@ defmodule Inmana.Restaurant do
    use Ecto.Schema
    import Ecto.Changeset
 
+   alias Inmana.Supply
+
    @primary_key {:id, :binary_id, autogenerate: true} #@ significa constante
+
 
    @required_params [:email, :name]
 
@@ -11,6 +14,9 @@ defmodule Inmana.Restaurant do
    schema "restaurants" do
     field :email, :binary
     field :name, :binary
+
+    has_many :supplies, Supply
+
 
     timestamps()
 

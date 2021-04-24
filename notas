@@ -1,0 +1,56 @@
+phoenix eh o django do elixir
+
+mix phx.new inmana --no-html --no-webpack
+cd inmana
+
+$ sudo -u postgres psql
+ALTER USER user_name WITH PASSWORD 'new_password';
+
+mix ecto.create
+
+mix phx.server
+mix phx.routes
+
+mix deps.get
+mix test
+mix compile
+
+mix credo.gen.config
+
+mix format
+
+REPL:
+iex -S mix #abre o interativo
+Inmana.Welcomer.welcome(%{"name" => "Bruno", "age" =>38}) #chama função
+String. #mostra todas funções
+recompile #recompila
+
+
+
+iex -S mix  phx.server #pra inciar o iex e plugar ja no servidor rodando
+
+
+
+============================================================================================================
+BANCO DE DADOS
+
+invez de model tem skima, que só tem estado
+mix ecto.gen.migration create_restaurants_table
+mix ecto.migrate
+
+h Inmana.Repo.insert #documentação
+
+
+Changeset é a função onde se faz cast e validacões
+%{name: "Bruno"} |> Restaurant.changeset().insert()
+
+
+params = %{name: "Balde de lixo", email: "balde@fenda.com"}
+
+No iex: 
+alias Inmana.Supply
+Repo.all(Supply)
+
+
+
+mix ecto.gen.migration create_supplies_table
