@@ -18,15 +18,15 @@ defmodule Inmana.Welcomer do
     |> IO.inspect()
   end
 
-  defp evaluate("Bruno", age) when age == 38 do
+  def evaluate("Bruno", "38") do
     {:ok, "Vai dormir"}
   end
 
-  defp evaluate(name, age) when age > 18 do
+  def evaluate(name, age) when age > 18 do
     {:ok, "Oi #{name}"}
   end
 
-  defp evaluate(name, age) do
+  def evaluate(name, age) do
     {:error, "Tchau #{name}"}
   end
 end

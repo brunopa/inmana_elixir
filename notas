@@ -68,3 +68,10 @@ Enum.reduce(stream, 0, fn {:ok, num}, acc -> num + acc end)
 
 Task.assinc_stream(lista, fn elem -> elem.a)
 |> Stream.run()
+
+============================================================================================================
+Test
+
+mix test --cover
+mix coveralls.html #/home/mint/projetos/elixir/inmana/cover/excoveralls.html
+

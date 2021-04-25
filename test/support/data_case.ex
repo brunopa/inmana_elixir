@@ -31,7 +31,7 @@ defmodule Inmana.DataCase do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(Inmana.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Inmana.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Inmana.Repo, {:shared, self()}) #desfaz as transação depois de fazer os testes
     end
 
     :ok
