@@ -1,3 +1,5 @@
+https://www.notion.so/Configura-es-do-ambiente-9d73d4eefa7043f593d9c768922306ca 
+
 phoenix eh o django do elixir
 
 mix phx.new inmana --no-html --no-webpack
@@ -51,6 +53,18 @@ No iex:
 alias Inmana.Supply
 Repo.all(Supply)
 
-
-
 mix ecto.gen.migration create_supplies_table
+
+============================================================================================================
+
+Assincronizidade
+task = Task.async(fn -> 1 + 1 end)
+
+computado = task.await(task) # tem um timeout padrao de 5 segundos
+
+strings = ["long string", "longer string", "there are many of these"]
+stream = Task.async_stream(strings, fn text -> text |> String.codepoints() |> Enum.count() end)
+Enum.reduce(stream, 0, fn {:ok, num}, acc -> num + acc end)
+
+Task.assinc_stream(lista, fn elem -> elem.a)
+|> Stream.run()

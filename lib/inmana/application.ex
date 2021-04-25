@@ -14,15 +14,16 @@ defmodule Inmana.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Inmana.PubSub},
       # Start the Endpoint (http/https)
-      InmanaWeb.Endpoint
+      InmanaWeb.Endpoint,
       # Start a worker by calling: Inmana.Worker.start_link(arg)
       # {Inmana.Worker, arg}
+      Inmana.Supplies.Scheduler
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Inmana.Supervisor]
-    Supervisor.start_link(children, opts)
+    opts = [strategy: :one_for_one, name: Inmana.Supervisor]# one_for_one: restart processos que morreram
+    Supervisor.start_link(children, opts) # varios processos tem esse start_link
   end
 
   # Tell Phoenix to update the endpoint configuration
